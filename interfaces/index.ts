@@ -8,3 +8,9 @@ export type User = {
   id: number
   name: string
 }
+
+export type EmailType = {
+  email: string;
+  domain: string;
+  server: string;
+}
