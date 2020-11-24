@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import download from 'downloadjs';
+// import download from 'downloadjs';
 
 // import Link from 'next/link'
 import Layout from '../components/Layout';
