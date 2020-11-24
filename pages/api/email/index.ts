@@ -21,24 +21,23 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
 
         const xmlData = getXMLDoc(email, server);
 
-        fs.writeFile(path.join(process.cwd(), `temp/${domain}.mobileconfig`), xmlData.toString(), err => {
+        fs.writeFile(path.join(process.cwd(), `public/temp/${domain}.mobileconfig`), xmlData.toString(), err => {
             console.log(err);
             if (err) throw Error('Something went wrong while trying to create file');
 
-            const fileBuffer = fs.readFileSync(path.join(process.cwd(), `temp/${domain}.mobileconfig`));
-            res.setHeader('Content-Disposition', 'attachment');
-            res.send(fileBuffer);
+   
+            res.status(200).json({ downloadUrl: `${_req.headers.host}/temp/${domain}.mobileconfig` });
 
             setTimeout(() => {
-                fs.access(path.join(process.cwd(), `temp/${domain}.mobileconfig`), (err: any) => {
+                fs.access(path.join(process.cwd(), `public/temp/${domain}.mobileconfig`), (err: any) => {
                     if (err) return;
-                    fs.unlink(path.join(process.cwd(), `temp/${domain}.mobileconfig`), (err: any) => {
+                    fs.unlink(path.join(process.cwd(), `public/temp/${domain}.mobileconfig`), (err: any) => {
                         if (err) return console.log('file does not exist');
                         console.log('deleted');
                     })
                 })
 
-            }, 5000);
+            }, 15000);
         })
     } catch (err) {
         res.status(404).json({ status: 'error', errorMessage: err.message});

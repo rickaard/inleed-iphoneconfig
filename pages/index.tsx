@@ -5,31 +5,39 @@ import download from 'downloadjs';
 // import Link from 'next/link'
 import Layout from '../components/Layout';
 
-const getEmailConfig = async (email: string) => {
-  const response: any = await fetch('/api/email', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email })
-  });
-  if (response.status !== 200) throw new Error('Not found');
-  const file = await response.blob();
-  return file;
-}
 
 const IndexPage = () => {
   const [value, setValue] = React.useState<string>('');
   const [error, setError] = React.useState<boolean>(false);
 
+  const getEmailConfig = async (email: string) => {
+    try {
+  
+      const response: any = await fetch('/api/email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      });
+  
+      if (response.status !== 200) throw new Error('Not found');
+  
+      const result = await response.json();
+      console.log(result);
+      // redirect to download URL 
+      window.location.assign(`http://${result.downloadUrl}`);
+      
+      return;
+    } catch (err) {
+      console.log(err);
+      setError(true);
+    }
+  
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(false);
-    getEmailConfig(value)
-      .then(file => {
-        download(file, `${value}.mobileconfig`, 'Content-Disposition: attachment');
-      })
-      .catch(() => {
-        setError(true);
-      });
+    getEmailConfig(value);
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
