@@ -12,26 +12,26 @@ const IndexPage = () => {
 
   const getEmailConfig = async (email: string) => {
     try {
-  
+
       const response: any = await fetch('/api/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })
       });
-  
+
       if (response.status !== 200) throw new Error('Not found');
-  
+
       const result = await response.json();
       console.log(result);
       // redirect to download URL 
-      window.location.assign(`http://${result.downloadUrl}`);
-      
+      window.location.assign(`:http://${result.downloadUrl}`);
+
       return;
     } catch (err) {
       console.log(err);
       setError(true);
     }
-  
+
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +52,7 @@ const IndexPage = () => {
         <div className="text-content">
           <p>Fyll i din e-postadress nedan för att hämta hem mailkonfigurationen.</p>
           {error && (
-            <p style={{fontSize: '1rem', color: 'red'}}>Något gick fel. Din domän kanske inte pekar mot Inleed?</p>
+            <p style={{ fontSize: '1rem', color: 'red' }}>Något gick fel. Din domän kanske inte pekar mot Inleed?</p>
           )}
         </div>
         <form onSubmit={handleSubmit}>
