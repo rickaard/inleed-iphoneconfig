@@ -5,6 +5,8 @@ import * as React from 'react';
 // import Link from 'next/link'
 import Layout from '../components/Layout';
 
+import Router from 'next/router';
+
 
 const IndexPage = () => {
   const [value, setValue] = React.useState<string>('');
@@ -24,7 +26,9 @@ const IndexPage = () => {
       const result = await response.json();
       console.log(result);
       // redirect to download URL 
-      window.location.assign(`:http://${result.downloadUrl}`);
+      // window.location.assign(`:http://${result.downloadUrl}`);
+      const domain = value.split('@')[1];
+      Router.push(`/download/${domain}`);
 
       return;
     } catch (err) {
