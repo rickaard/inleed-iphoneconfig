@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-// import download from 'downloadjs';
+import download from 'downloadjs';
 
 // import Link from 'next/link'
 import Layout from '../components/Layout';
 
-import Router from 'next/router';
+// import Router from 'next/router';
 
 
 const IndexPage = () => {
@@ -15,7 +15,7 @@ const IndexPage = () => {
   const getEmailConfig = async (email: string) => {
     try {
 
-      const response: any = await fetch('/api/email', {
+      const response: any = await fetch('/gen', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })
@@ -24,11 +24,12 @@ const IndexPage = () => {
       if (response.status !== 200) throw new Error('Not found');
 
       const result = await response.json();
+      // const fileName = `${value.split('@')[1]}.mobileconfig`;
+
       console.log(result);
       // redirect to download URL 
-      // window.location.assign(`:http://${result.downloadUrl}`);
-      const domain = value.split('@')[1];
-      Router.push(`/download/${domain}`);
+      window.location.assign(`${result.downloadUrl}`);
+
 
       return;
     } catch (err) {
