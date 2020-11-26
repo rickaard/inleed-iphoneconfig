@@ -45,9 +45,6 @@ app.prepare().then(() => {
 
                 }, 60000);
 
-                // res.download(`${__dirname}/temp/${domain}.mobileconfig`, `${domain}.mobileconfig`, (err) => {
-                //     if (err) throw Error('Something went wrong while trying to send file');
-                // });
             })
         } catch (err) {
             res.status(404).json({ status: 'error', errorMessage: err });

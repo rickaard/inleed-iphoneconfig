@@ -1,12 +1,5 @@
 import * as React from 'react';
-
-import download from 'downloadjs';
-
-// import Link from 'next/link'
 import Layout from '../components/Layout';
-
-// import Router from 'next/router';
-
 
 const IndexPage = () => {
   const [value, setValue] = React.useState<string>('');
@@ -24,11 +17,10 @@ const IndexPage = () => {
       if (response.status !== 200) throw new Error('Not found');
 
       const result = await response.json();
-      // const fileName = `${value.split('@')[1]}.mobileconfig`;
 
       console.log(result);
-      // redirect to download URL 
-      window.location.assign(`${result.downloadUrl}`);
+      // redirect to download URL
+      window.location.assign(`http://${result.downloadUrl}`);
 
 
       return;
