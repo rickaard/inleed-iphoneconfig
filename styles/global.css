@@ -1,6 +1,7 @@
 :root {
     --primary-bg: #2698ee;
-    --primary-color: #2d2b2b;
+    /* --primary-color: #2d2b2b; */
+    --primary-color: #fff;
 }
 
 html,
@@ -120,4 +121,37 @@ body {
 
 .btn:hover {
     color: #e8e8e8;
+}
+
+
+.input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 3rem 0 1rem 0;
+}
+
+.input-wrapper .input {
+    border: none;
+    border-bottom: 1px solid;
+    font-size: 1.2rem;
+    background: inherit;
+    color: #FFF;
+    padding: .2em;
+    width: 100%;
+}
+
+.input-wrapper .label {
+    color: #FFF;
+    position: absolute;
+    left: 0;
+    transition: transform 0.5s;
+    transform: translate(0, 0px) scale(1);
+    cursor: text;
+}
+
+.input-wrapper .label.focused {
+    transform: translate(3px, -20px) scale(0.75);
+    transform-origin: top left;
 }
