@@ -2,6 +2,9 @@ import * as React from 'react';
 import Layout from '../components/Layout';
 
 import InputFloatingLabel from '../components/InputFloatingLabel';
+import InstructionContainer from '../components/InstructionContainer';
+
+import { texts } from '../data';
 
 const IndexPage = () => {
   const [value, setValue] = React.useState<string>('');
@@ -55,17 +58,28 @@ const IndexPage = () => {
           )}
         </div>
         <form onSubmit={handleSubmit}>
-          <InputFloatingLabel 
+          <InputFloatingLabel
             inputType="email"
             handleChange={handleChange}
             inputName="email"
             inputValue={value}
             labelName="Din e-postadress"
           />
-          {/* <label htmlFor="email">E-postadress:</label>
-          <input type="email" id="email" onChange={handleChange} placeholder="Din e-postadress" /> */}
           <button type="submit" className="btn">Hämta</button>
         </form>
+      </div>
+
+      <div className="instructions-wrapper">
+        <h2>Hur det går till</h2>
+        {texts.map(instruction => (
+          <InstructionContainer
+            key={instruction.id}
+            textHeader={instruction.textHeader}
+            textParagraph={instruction.textPara}
+            img={instruction.imgUrl}
+            imgAlt={instruction.imgAlt}
+          />
+        ))}
       </div>
 
     </Layout>

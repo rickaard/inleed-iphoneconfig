@@ -101,7 +101,7 @@ body {
 }
 
 .waves {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
@@ -154,4 +154,70 @@ body {
 .input-wrapper .label.focused {
     transform: translate(3px, -20px) scale(0.75);
     transform-origin: top left;
+}
+
+
+.instructions-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin: 3rem .5rem;
+	width: 80%;
+	max-width: 660px;
+}
+.instructions-wrapper > h2 {
+    text-align: center;
+    position: relative;
+    margin: 6rem auto;
+    text-transform: uppercase;
+}
+
+.instructions-wrapper > h2:before,
+.instructions-wrapper > h2:after {
+    content: "";
+    display: block;
+	position: absolute;
+	height: 14px;
+	border-bottom: 1px solid white;
+	top: 0;
+	width: 30px;
+}
+
+.instructions-wrapper > h2:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.instructions-wrapper > h2:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.instruction-container {
+	display: flex;
+	flex-direction: row;
+    justify-content: space-between;
+    margin: 4rem 0;
+}
+
+.instruction-container:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.instruction--img,
+.instruction--text {
+	max-width: calc(50% - 40px);
+}
+.instruction--text {
+    align-self: center;
+    font-size: 1.1rem;
+}
+.instruction--text h4 {
+    font-size: 1.6rem;
+}
+.instruction--text p {
+    line-height: 1.4;
+}
+
+
+.instruction--img img {
+	width: 100%;
 }
