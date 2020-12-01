@@ -4,8 +4,7 @@
     --primary-color: #fff;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     height: 100vh;
 }
@@ -123,7 +122,6 @@ body {
     color: #e8e8e8;
 }
 
-
 .input-wrapper {
     width: 100%;
     display: flex;
@@ -156,45 +154,45 @@ body {
     transform-origin: top left;
 }
 
-
 .instructions-wrapper {
-	display: flex;
-	flex-direction: column;
-	margin: 3rem .5rem;
-	width: 80%;
-	max-width: 660px;
+    display: flex;
+    flex-direction: column;
+    margin: 3rem .5rem;
+    width: 80%;
+    max-width: 1200px;
 }
-.instructions-wrapper > h2 {
+
+.instructions-wrapper>h2 {
     text-align: center;
     position: relative;
     margin: 6rem auto;
     text-transform: uppercase;
 }
 
-.instructions-wrapper > h2:before,
-.instructions-wrapper > h2:after {
+.instructions-wrapper>h2:before, .instructions-wrapper>h2:after {
     content: "";
     display: block;
-	position: absolute;
-	height: 14px;
-	border-bottom: 1px solid white;
-	top: 0;
-	width: 30px;
+    position: absolute;
+    height: 14px;
+    border-bottom: 1px solid white;
+    top: 0;
+    width: 30px;
 }
 
-.instructions-wrapper > h2:before {
-  right: 100%;
-  margin-right: 15px;
+.instructions-wrapper>h2:before {
+    right: 100%;
+    margin-right: 15px;
 }
-.instructions-wrapper > h2:after {
-  left: 100%;
-  margin-left: 15px;
+
+.instructions-wrapper>h2:after {
+    left: 100%;
+    margin-left: 15px;
 }
 
 .instruction-container {
-	display: flex;
-	flex-direction: row;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     margin: 4rem 0;
 }
 
@@ -202,22 +200,54 @@ body {
     flex-direction: row-reverse;
 }
 
-.instruction--img,
-.instruction--text {
-	max-width: calc(50% - 40px);
+.instruction--img, .instruction--text {
+    max-width: calc(50% - 40px);
 }
+
+.instruction--img {
+    max-width: 220px;
+}
+
 .instruction--text {
     align-self: center;
     font-size: 1.1rem;
 }
+
 .instruction--text h4 {
     font-size: 1.6rem;
 }
+
 .instruction--text p {
     line-height: 1.4;
 }
 
-
 .instruction--img img {
-	width: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+    .instruction-container {
+        flex-direction: column;
+    }
+    .instruction-container:nth-child(odd) {
+        flex-direction: column;
+    }
+    .instruction--img, 
+    .instruction--text {
+        margin: 0 auto;
+    }
+
+    .instruction--text {
+        max-width: 80%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .instruction--img {
+        max-width: 180px;
+    }
+    .instruction--text {
+        max-width: 95%;
+    }
 }
