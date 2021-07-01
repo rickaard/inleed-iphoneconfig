@@ -25,7 +25,7 @@ const IndexPage = () => {
 
       console.log(result);
       // redirect to download URL
-      window.location.assign(`http://${result.downloadUrl}`);
+      window.location.assign(`https://${result.downloadUrl}`);
 
 
       return;
